@@ -9,9 +9,9 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    #ตัวอย่าง Message Type "Text + Sticker"
-   $arrayPostData['to'] = "Cc314d9fa1df98d4aa56757d5dbece10d";
    if($_POST['action'] == "submit" && isset($_POST['data'])){
-   	$result = explode(":", $_POST['data']);
+      $arrayPostData['to'] = "Cc314d9fa1df98d4aa56757d5dbece10d";
+	  $result = explode(":", $_POST['data']);
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
    $arrayPostData['messages'][1]['type'] = "text";
