@@ -11,9 +11,10 @@
    $id = ["U51dcf76939ded741540ca6463e11a930"];
    #ตัวอย่าง Message Type "Text + Sticker"
    $arrayPostData['to'] = $id;
-   if($_POST['action'] == "test"){
+   if($_POST['action'] == "submit" && isset($_POST['data'])){
+   	$result = explode(":", $_POST['data']);
     $arrayPostData['messages'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['text'] = "Test Notification";
+    $arrayPostData['messages'][0]['text'] = "แจ้ง้เตือนยอดน้องปัจจุบัน \n - ยอดน้องทั้งหมด ".$result[0]." คน";
    }
    pushMsg($arrayHeader,$arrayPostData);
   
