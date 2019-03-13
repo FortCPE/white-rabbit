@@ -7,7 +7,7 @@
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    //รับข้อความจากผู้ใช้
    $message = $arrayJson['events'][0]['message']['text'];
-   if(strpos($messages, "ยอดน้อง") !== false){
+   if(strpos($message, "ยอดน้อง") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
