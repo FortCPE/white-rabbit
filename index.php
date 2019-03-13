@@ -8,12 +8,9 @@ $arrayHeader = array();
 //รับข้อความจากผู้ใช้
    $message = $arrayJson['events'][0]['message']['text'];
 
-   if(isset($arrayJson['events'][0]['source']['groupId'])){
-      $id = $arrayJson['events'][0]['source']['groupId'];
-   }
 #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "สวัสดี"){
-      $arrayPostData['to'] = $id;
+      $arrayPostData['to'] = "Cc314d9fa1df98d4aa56757d5dbece10d";
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = $id;
       $arrayPostData['messages'][1]['type'] = "sticker";
