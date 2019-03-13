@@ -49,6 +49,12 @@
          
          replyMsg($arrayHeader,$arrayPostData);
       }
+   }else if($message == "@id"){
+      $id = $arrayJson['events'][0]['source']['userId'];
+      $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = $id;
+      replyMsg($arrayHeader,$arrayPostData);
    }
    if($_POST['action'] == "submit" && isset($_POST['data'])){
    $id = ["U51dcf76939ded741540ca6463e11a930"];
