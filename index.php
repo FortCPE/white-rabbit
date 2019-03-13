@@ -7,11 +7,53 @@
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    //รับข้อความจากผู้ใช้
    $message = $arrayJson['events'][0]['message']['text'];
-   //รับ id ของผู้ใช้
+   if(strpos($messages, "ยอดน้อง") !== false){
+      if(isset($arrayJson['events'][0]['source']['groupId'])){
+         $id = $arrayJson['events'][0]['source']['groupId'];
+         $arrayPostData['to'] = $id;
+         $post = [
+           'submit' => true
+         ];
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, 'https://registrar.2bkmutt.com/core/get_info.php');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+         $response = curl_exec($ch);
+         $result = explode(":", $response);
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
+         $arrayPostData['messages'][1]['type'] = "text";
+         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
+         
+         replyMsg($arrayHeader,$arrayPostData);
+      }else{
+         $id = $arrayJson['events'][0]['source']['userId'];
+         $arrayPostData['to'] = $id;
+         $post = [
+           'submit' => true
+         ];
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, 'https://registrar.2bkmutt.com/core/get_info.php');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+         $response = curl_exec($ch);
+         $result = explode(":", $response);
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
+         $arrayPostData['messages'][1]['type'] = "text";
+         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
+         
+         replyMsg($arrayHeader,$arrayPostData);
+      }
+   }
+   if($_POST['action'] == "submit" && isset($_POST['data'])){
    $id = ["U51dcf76939ded741540ca6463e11a930"];
    #ตัวอย่าง Message Type "Text + Sticker"
    $arrayPostData['to'] = $id;
-   if($_POST['action'] == "submit" && isset($_POST['data'])){
    	$result = explode(":", $_POST['data']);
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
@@ -19,11 +61,24 @@
     $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
    $arrayPostData['messages'][2]['type'] = "text";
     $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
-   }
    pushMsg($arrayHeader,$arrayPostData);
+   }
   
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/multicast";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL,$strUrl);
+      curl_setopt($ch, CURLOPT_HEADER, false);
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      $result = curl_exec($ch);
+      curl_close ($ch);
+   }
+   function replyMsg($arrayHeader,$arrayPostData){
+      $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL,$strUrl);
       curl_setopt($ch, CURLOPT_HEADER, false);
