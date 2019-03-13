@@ -12,7 +12,7 @@ $arrayHeader = array();
    if($message == "สวัสดี"){
       $arrayPostData['to'] = "Cc314d9fa1df98d4aa56757d5dbece10d";
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $id;
+      $arrayPostData['messages'][0]['text'] = "test";
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
