@@ -1,4 +1,5 @@
 <?php
+//mysql://b379b46b1d3faf:3fd19d7d@us-cdbr-iron-east-03.cleardb.net/heroku_765e6206795ae96?reconnect=true
  $accessToken = "CwYcqVS3XK9U+VHvq16CWDtVIJZq/xqLdASXGTBuLZ1uUTq54Y8SsqBlY2H0dEjW8Jz+ldrd6yf+rTRJMlXIt2OcBTTlOwKJpnpOXyzyOirRdbFzm+/KrBsNcj32qPnFYgYvq12yD2Jl9d2CLrLUAwdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
    $content = file_get_contents('php://input');
    $arrayJson = json_decode($content, true);
@@ -7,6 +8,11 @@
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    //รับข้อความจากผู้ใช้
    $message = $arrayJson['events'][0]['message']['text'];
+   $server = 'us-cdbr-iron-east-03.cleardb.net';
+   $username = 'b379b46b1d3faf';
+   $password = '3fd19d7d';
+   $db = 'heroku_765e6206795ae96';
+   $pdo = new PDO("mysql:host=$server;dbname=$db", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); 
    if(strpos($message, "ยอดน้อง") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
@@ -57,7 +63,12 @@
       replyMsg($arrayHeader,$arrayPostData);
    }
    if($_POST['action'] == "submit" && isset($_POST['data'])){
-   $id = ["U51dcf76939ded741540ca6463e11a930"];
+   $query_connection = $pdo->prepare("SELECT user_id FROM user_id");
+   $query_connection->execute();
+   $id = [];
+   while($fetch_connection = $query_connection->fetch(PDO::FETCH_ASSOC)){
+      array_push($id, $fetch_connection['user_id']);
+   }
    #ตัวอย่าง Message Type "Text + Sticker"
    $arrayPostData['to'] = $id;
    	$result = explode(":", $_POST['data']);
