@@ -58,11 +58,24 @@
    }else if(strpos($message, "ผูกบัญชี") !== false){
       $id = $arrayJson['events'][0]['source']['userId'];
       $arrayPostData['to'] = $id;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "[System] ผูกบัญชีแล้วจ้า รอรับการแจ้งเตือนได้เลย";
-      $arrayPostData['messages'][1]['type'] = "sticker";
-      $arrayPostData['messages'][1]['packageId'] = "2";
-      $arrayPostData['messages'][1]['stickerId'] = "34";
+      $query_connection = $pdo->prepare("INSERT INTO `user_id` (`id`, `user_id`) VALUES (:id, :user_id);");
+      $result = $query_connection->execute(Array(
+         ":id" => NULL,
+         ":user_id" => $id
+      ));
+      if($result):
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "[System] ผูกบัญชีแล้วจ้า รอรับการแจ้งเตือนได้เลย";
+         $arrayPostData['messages'][1]['type'] = "sticker";
+         $arrayPostData['messages'][1]['packageId'] = "2";
+         $arrayPostData['messages'][1]['stickerId'] = "34";
+      else:
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "[System] ไม่สามารถผูกบัญชีได้ กรุณาลองใหม่";
+         $arrayPostData['messages'][1]['type'] = "sticker";
+         $arrayPostData['messages'][1]['packageId'] = "2";
+         $arrayPostData['messages'][1]['stickerId'] = "34";
+      endif;
       replyMsg($arrayHeader,$arrayPostData);
    }else if($message == "@id"){
       $id = $arrayJson['events'][0]['source']['userId'];
