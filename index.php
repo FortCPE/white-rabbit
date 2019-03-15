@@ -66,6 +66,7 @@
       if($row_connection >= 1):
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "[System] ผูกบัญชีไปแล้วนะ ลืมหรอ อิอิ";
+         replyMsg($arrayHeader,$arrayPostData);
       else:
          $query_connection = $pdo->prepare("INSERT INTO `user_id` (`id`, `user_id`) VALUES (:id, :user_id);");
          $result = $query_connection->execute(Array(
