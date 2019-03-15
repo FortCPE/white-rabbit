@@ -66,7 +66,7 @@
       if($row_connection >= 1):
          $arrayPostData['messages'][0]['type'] = "text";
          $arrayPostData['messages'][0]['text'] = "[System] ผูกบัญชีไปแล้วนะ ลืมหรอ อิอิ";
-         replyMsg($arrayHeader,$arrayPostData);
+          replyMsg($arrayHeader,$arrayPostData);
       else:
          $query_connection = $pdo->prepare("INSERT INTO `user_id` (`id`, `user_id`) VALUES (:id, :user_id);");
          $result = $query_connection->execute(Array(
@@ -104,13 +104,15 @@
       }
       #ตัวอย่าง Message Type "Text + Sticker"
       $arrayPostData['to'] = $id;
-      	$result = explode(":", $_POST['data']);
-       $arrayPostData['messages'][0]['type'] = "text";
-       $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
+      $result = explode(":", $_POST['data']);
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
       $arrayPostData['messages'][1]['type'] = "text";
-       $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
+      $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
       $arrayPostData['messages'][2]['type'] = "text";
-       $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
+      $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
+      $arrayPostData['messages'][3]['type'] = "text";
+      $arrayPostData['messages'][3]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดน้องผู้ชาย ".$result[10]."คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน";      
       pushMsg($arrayHeader,$arrayPostData);
    }
   
