@@ -55,6 +55,15 @@
          
          replyMsg($arrayHeader,$arrayPostData);
       }
+   }else if(strpos($message, "ผูกบัญชี") !== false){
+      $id = $arrayJson['events'][0]['source']['userId'];
+      $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "[System] ผูกบัญชีแล้วจ้า รอรับการแจ้งเตือนได้เลย";
+      $arrayPostData['messages'][1]['type'] = "sticker";
+      $arrayPostData['messages'][1]['packageId'] = "2";
+      $arrayPostData['messages'][1]['stickerId'] = "34";
+      replyMsg($arrayHeader,$arrayPostData);
    }else if($message == "@id"){
       $id = $arrayJson['events'][0]['source']['userId'];
       $arrayPostData['to'] = $id;
@@ -63,22 +72,22 @@
       replyMsg($arrayHeader,$arrayPostData);
    }
    if($_POST['action'] == "submit" && isset($_POST['data'])){
-   $query_connection = $pdo->prepare("SELECT user_id FROM user_id");
-   $query_connection->execute();
-   $id = [];
-   while($fetch_connection = $query_connection->fetch(PDO::FETCH_ASSOC)){
-      array_push($id, $fetch_connection['user_id']);
-   }
-   #ตัวอย่าง Message Type "Text + Sticker"
-   $arrayPostData['to'] = $id;
-   	$result = explode(":", $_POST['data']);
-    $arrayPostData['messages'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
-   $arrayPostData['messages'][1]['type'] = "text";
-    $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
-   $arrayPostData['messages'][2]['type'] = "text";
-    $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
-   pushMsg($arrayHeader,$arrayPostData);
+      $query_connection = $pdo->prepare("SELECT user_id FROM user_id");
+      $query_connection->execute();
+      $id = [];
+      while($fetch_connection = $query_connection->fetch(PDO::FETCH_ASSOC)){
+         array_push($id, $fetch_connection['user_id']);
+      }
+      #ตัวอย่าง Message Type "Text + Sticker"
+      $arrayPostData['to'] = $id;
+      	$result = explode(":", $_POST['data']);
+       $arrayPostData['messages'][0]['type'] = "text";
+       $arrayPostData['messages'][0]['text'] = "แจ้งเตือนยอดน้องปัจจุบัน \n - น้องทั้งหมด ".$result[0]." คน \n - น้องลาทั้งหมด ".$result[1]." คน \n - น้องคงเหลือ ".$result[2]." คน";
+      $arrayPostData['messages'][1]['type'] = "text";
+       $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
+      $arrayPostData['messages'][2]['type'] = "text";
+       $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
+      pushMsg($arrayHeader,$arrayPostData);
    }
   
    function pushMsg($arrayHeader,$arrayPostData){
