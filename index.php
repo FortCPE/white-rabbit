@@ -58,7 +58,7 @@
    }else if(strpos($message, "ผูกบัญชี") !== false){
       $id = $arrayJson['events'][0]['source']['userId'];
       $arrayPostData['to'] = $id;
-      $check_connection = $pdo->prepare("SELECT id FROM user_id WHERE user_id = :user_id");
+      $check_connection = $pdo->prepare("SELECT * FROM user_id WHERE user_id = :user_id");
       $check_connection->execute(Array(
          ":user_id" => $id
       ));
