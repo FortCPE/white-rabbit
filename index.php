@@ -115,6 +115,10 @@
       $arrayPostData['messages'][3]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดน้องผู้ชาย ".$result[10]." คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน";   
       $arrayPostData['messages'][4]['type'] = "text";
       $arrayPostData['messages'][4]['text'] = "ยอดน้อง SEC 2 ทั้งหมด ".$result[16]." คน \n - ยอดน้องผู้ชาย ".$result[17]." คน \n - ยอดน้องผู้หญิง ".$result[18]." คน \n - ผู้ชายลา ".$result[19]." คน \n - ผู้หญิงลา ".$result[20]." คน \n - ผู้ชายคงเหลือ ".$result[21]." คน \n - ผู้หญิงคงเหลือ ".$result[22]." คน";    
+      $arrayPostData['messages'][5]['type'] = "text";
+      $arrayPostData['messages'][5]['text'] = "ยอดน้อง SEC 3 ทั้งหมด ".$result[23]." คน \n - ยอดน้องผู้ชาย ".$result[24]." คน \n - ยอดน้องผู้หญิง ".$result[25]." คน \n - ผู้ชายลา ".$result[26]." คน \n - ผู้หญิงลา ".$result[27]." คน \n - ผู้ชายคงเหลือ ".$result[28]." คน \n - ผู้หญิงคงเหลือ ".$result[29]." คน";   
+      $arrayPostData['messages'][6]['type'] = "text";
+      $arrayPostData['messages'][6]['text'] = "ยอดน้อง SEC 4 ทั้งหมด ".$result[30]." คน \n - ยอดน้องผู้ชาย ".$result[31]." คน \n - ยอดน้องผู้หญิง ".$result[32]." คน \n - ผู้ชายลา ".$result[33]." คน \n - ผู้หญิงลา ".$result[34]." คน \n - ผู้ชายคงเหลือ ".$result[35]." คน \n - ผู้หญิงคงเหลือ ".$result[36]." คน";         
       pushMsg($arrayHeader,$arrayPostData);
    }
   
