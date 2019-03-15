@@ -13,7 +13,7 @@
    $password = '3fd19d7d';
    $db = 'heroku_765e6206795ae96';
    $pdo = new PDO("mysql:host=$server;dbname=$db", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); 
-   if(strpos($message, "ยอดน้อง") !== false){
+   if(strpos($message, "ขอยอดน้องทั้งหมด") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
@@ -52,6 +52,40 @@
          $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
          $arrayPostData['messages'][2]['type'] = "text";
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
+         
+         replyMsg($arrayHeader,$arrayPostData);
+      }
+   }else if(strpos($message, "ขอยอดน้อง sec1") !== false){
+      if(isset($arrayJson['events'][0]['source']['groupId'])){
+         $id = $arrayJson['events'][0]['source']['groupId'];
+         $arrayPostData['to'] = $id;
+         $post = [
+           'submit' => true
+         ];
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, 'https://registrar.2bkmutt.com/core/get_info.php');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+         $response = curl_exec($ch);
+         $result = explode(":", $response);
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดคงเหลือ ".$result[14]+$result[15]." คน \n - ยอดน้องผู้ชาย ".$result[10]." คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน"; 
+         
+         replyMsg($arrayHeader,$arrayPostData);
+      }else{
+         $id = $arrayJson['events'][0]['source']['userId'];
+         $arrayPostData['to'] = $id;
+         $post = [
+           'submit' => true
+         ];
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, 'https://registrar.2bkmutt.com/core/get_info.php');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+         $response = curl_exec($ch);
+         $result = explode(":", $response);
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดคงเหลือ ".$result[14]+$result[15]." คน \n - ยอดน้องผู้ชาย ".$result[10]." คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน";  
          
          replyMsg($arrayHeader,$arrayPostData);
       }
@@ -110,9 +144,7 @@
       $arrayPostData['messages'][1]['type'] = "text";
       $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
       $arrayPostData['messages'][2]['type'] = "text";
-      $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
-      $arrayPostData['messages'][3]['type'] = "text";
-      $arrayPostData['messages'][3]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดคงเหลือ ".$result[14]+$result[15]." คน \n - ยอดน้องผู้ชาย ".$result[10]." คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน \nยอดน้อง SEC 2 ทั้งหมด ".$result[16]." คน \n - ยอดคงเหลือ ".$result[21]+$result[22]." คน \n - ยอดน้องผู้ชาย ".$result[17]." คน \n - ยอดน้องผู้หญิง ".$result[18]." คน \n - ผู้ชายลา ".$result[19]." คน \n - ผู้หญิงลา ".$result[20]." คน \n - ผู้ชายคงเหลือ ".$result[21]." คน \n - ผู้หญิงคงเหลือ ".$result[22]." คน";    
+      $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";      
       pushMsg($arrayHeader,$arrayPostData);
    }
   
