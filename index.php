@@ -69,7 +69,7 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดคงเหลือ ".$result[14]+$result[15]." คน \n - ยอดน้องผู้ชาย ".$result[10]." คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน"; 
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[12]+$result[13]. " คน \n - ยอดน้องคงเหลือ ".$result[14]+$result[15]; 
          
          replyMsg($arrayHeader,$arrayPostData);
       }else{
@@ -85,7 +85,7 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดคงเหลือ ".$result[14]+$result[15]." คน \n - ยอดน้องผู้ชาย ".$result[10]." คน \n - ยอดน้องผู้หญิง ".$result[11]." คน \n - ผู้ชายลา ".$result[12]." คน \n - ผู้หญิงลา ".$result[13]." คน \n - ผู้ชายคงเหลือ ".$result[14]." คน \n - ผู้หญิงคงเหลือ ".$result[15]." คน";  
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[12]+$result[13]. " คน \n - ยอดน้องคงเหลือ ".$result[14]+$result[15]; 
          
          replyMsg($arrayHeader,$arrayPostData);
       }
