@@ -69,7 +69,7 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".(int)$result[12]+(int)$result[13]. " คน \n - ยอดน้องคงเหลือ ".$result[14]+$result[15]; 
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[12]+$result[13]. " คน \n - ยอดน้องคงเหลือ ".$result[14]+$result[15]; 
          
          replyMsg($arrayHeader,$arrayPostData);
       }else{
@@ -85,7 +85,7 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".(int)$result[12]+(int)$result[13];
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[12]+$result[13];
          replyMsg($arrayHeader,$arrayPostData);
       }
    }else if(strpos($message, "ผูกบัญชี") !== false){
