@@ -85,7 +85,7 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน"; 
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[12]+$result[13];
          replyMsg($arrayHeader,$arrayPostData);
       }
    }else if(strpos($message, "ผูกบัญชี") !== false){
