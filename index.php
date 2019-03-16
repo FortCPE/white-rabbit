@@ -134,7 +134,6 @@
          $arrayPostData['messages'][2]['type'] = "text";
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[24]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[25]." คน \n - น้องผู้หญิงคงเหลือ ".$result[26]." คน";
          replyMsg($arrayHeader,$arrayPostData);
-         replyMsg($arrayHeader,$arrayPostData);
       }
    }else if(strpos($message, "ผูกบัญชี") !== false){
       $id = $arrayJson['events'][0]['source']['userId'];
