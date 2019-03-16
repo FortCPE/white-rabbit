@@ -32,8 +32,6 @@
          $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
          $arrayPostData['messages'][2]['type'] = "text";
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
-         $arrayPostData['messages'][3]['type'] = "text";
-         $arrayPostData['messages'][3]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[10]." คน คงเหลือ ".$result[11]." คน \n ยอดน้อง SEC 2 ทั้งหมด ".$result[18]." คน \n - ยอดน้องลา ".$result[19]." คน คงเหลือ ".$result[20]." คน \n ";
          replyMsg($arrayHeader,$arrayPostData);
       }else{
          $id = $arrayJson['events'][0]['source']['userId'];
@@ -53,8 +51,6 @@
          $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[3]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[4]." คน \n - น้องผู้ชายคงเหลือ ".$result[5]." คน";
          $arrayPostData['messages'][2]['type'] = "text";
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
-         $arrayPostData['messages'][3]['type'] = "text";
-         $arrayPostData['messages'][3]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - คงเหลือ ".$result[11]." คน \n ยอดน้อง SEC 2 ทั้งหมด ".$result[18]." คน \n - คงเหลือ ".$result[20]." คน \n ";
          replyMsg($arrayHeader,$arrayPostData);
       }
    }else if(strpos($message, "ขอยอดน้อง sec1") !== false){
