@@ -13,7 +13,7 @@
    $password = '3fd19d7d';
    $db = 'heroku_765e6206795ae96';
    $pdo = new PDO("mysql:host=$server;dbname=$db", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); 
-   if(strpos($message, "ขอยอดน้องทั้งหมด") !== false){
+   if(strpos($message, "ยอดน้องทั้งหมด") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
