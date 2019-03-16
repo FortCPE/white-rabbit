@@ -109,9 +109,11 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 2 \n - ยอดน้องทั้งหมด ".$result[15]." คน \n - ยอดน้องลา ".$result[16]." คน \n - น้องคงเหลือ ".$result[17]." คน";
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 2 \n - ยอดน้องทั้งหมด ".$result[18]." คน \n - ยอดน้องลา ".$result[19]." คน \n - น้องคงเหลือ ".$result[20]." คน";
          $arrayPostData['messages'][1]['type'] = "text";
-         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[18]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[19]." คน \n - น้องผู้ชายคงเหลือ ".$result[20]." คน";
+         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[21]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[22]." คน \n - น้องผู้ชายคงเหลือ ".$result[23]." คน";
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[24]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[25]." คน \n - น้องผู้หญิงคงเหลือ ".$result[26]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }else{
          $id = $arrayJson['events'][0]['source']['userId'];
@@ -126,9 +128,12 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 2 \n - ยอดน้องทั้งหมด ".$result[15]." คน \n - ยอดน้องลา ".$result[16]." คน \n - น้องคงเหลือ ".$result[17]." คน";
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 2 \n - ยอดน้องทั้งหมด ".$result[18]." คน \n - ยอดน้องลา ".$result[19]." คน \n - น้องคงเหลือ ".$result[20]." คน";
          $arrayPostData['messages'][1]['type'] = "text";
-         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[18]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[19]." คน \n - น้องผู้ชายคงเหลือ ".$result[20]." คน";
+         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[21]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[22]." คน \n - น้องผู้ชายคงเหลือ ".$result[23]." คน";
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[24]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[25]." คน \n - น้องผู้หญิงคงเหลือ ".$result[26]." คน";
+         replyMsg($arrayHeader,$arrayPostData);
          replyMsg($arrayHeader,$arrayPostData);
       }
    }else if(strpos($message, "ผูกบัญชี") !== false){
