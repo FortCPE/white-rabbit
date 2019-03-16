@@ -69,8 +69,7 @@
          $response = curl_exec($ch);
          $result = explode(":", $response);
          $arrayPostData['messages'][0]['type'] = "text";
-         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[12]+$result[13]. " คน \n - ยอดน้องคงเหลือ ".$result[14]+$result[15]; 
-         
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 1 \n - ยอดน้องทั้งหมด ".$result[9]." คน \n - ยอดน้องลา ".$result[10]." คน \n - น้องคงเหลือ ".$result[11]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }else{
          $id = $arrayJson['events'][0]['source']['userId'];
