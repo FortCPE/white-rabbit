@@ -135,6 +135,46 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[24]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[25]." คน \n - น้องผู้หญิงคงเหลือ ".$result[26]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }
+   }else if(strpos($message, "ขอยอดน้อง sec3") !== false){
+      if(isset($arrayJson['events'][0]['source']['groupId'])){
+         $id = $arrayJson['events'][0]['source']['groupId'];
+         $arrayPostData['to'] = $id;
+         $post = [
+           'submit' => true
+         ];
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, 'https://registrar.2bkmutt.com/core/get_info.php');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+         $response = curl_exec($ch);
+         $result = explode(":", $response);
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 3 \n - ยอดน้องทั้งหมด ".$result[27]." คน \n - ยอดน้องลา ".$result[28]." คน \n - น้องคงเหลือ ".$result[29]." คน";
+         $arrayPostData['messages'][1]['type'] = "text";
+         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[30]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[31]." คน \n - น้องผู้ชายคงเหลือ ".$result[32]." คน";
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[33]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[34]." คน \n - น้องผู้หญิงคงเหลือ ".$result[35]." คน";
+         replyMsg($arrayHeader,$arrayPostData);
+      }else{
+         $id = $arrayJson['events'][0]['source']['userId'];
+         $arrayPostData['to'] = $id;
+         $post = [
+           'submit' => true
+         ];
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, 'https://registrar.2bkmutt.com/core/get_info.php');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+         $response = curl_exec($ch);
+         $result = explode(":", $response);
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = "ยอดน้อง SEC 3 \n - ยอดน้องทั้งหมด ".$result[27]." คน \n - ยอดน้องลา ".$result[28]." คน \n - น้องคงเหลือ ".$result[29]." คน";
+         $arrayPostData['messages'][1]['type'] = "text";
+         $arrayPostData['messages'][1]['text'] = "ยอดน้องผู้ชายปัจจุบัน \n - น้องผู้ชายทั้งหมด ".$result[30]." คน \n - น้องผู้ชายลาทั้งหมด ".$result[31]." คน \n - น้องผู้ชายคงเหลือ ".$result[32]." คน";
+         $arrayPostData['messages'][2]['type'] = "text";
+         $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[33]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[34]." คน \n - น้องผู้หญิงคงเหลือ ".$result[35]." คน";
+         replyMsg($arrayHeader,$arrayPostData);
+      }
    }else if(strpos($message, "ผูกบัญชี") !== false){
       $id = $arrayJson['events'][0]['source']['userId'];
       $arrayPostData['to'] = $id;
