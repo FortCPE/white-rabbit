@@ -55,8 +55,6 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
          $arrayPostData['messages'][3]['type'] = "text";
          $arrayPostData['messages'][3]['text'] = "ยอดน้อง SEC 1 ทั้งหมด ".$result[9]." คน \n - คงเหลือ ".$result[11]." คน \n ยอดน้อง SEC 2 ทั้งหมด ".$result[18]." คน \n - คงเหลือ ".$result[20]." คน \n ";
-         $arrayPostData['messages'][4]['type'] = "text";
-         $arrayPostData['messages'][4]['text'] = "ยอดน้อง SEC 3 ทั้งหมด ".$result[27]." คน \n - คงเหลือ ".$result[29]." คน \n ยอดน้อง SEC 4 ทั้งหมด ".$result[36]." คน \n - คงเหลือ ".$result[38]." คน \n ";
          replyMsg($arrayHeader,$arrayPostData);
       }
    }else if(strpos($message, "ขอยอดน้อง sec1") !== false){
