@@ -53,7 +53,7 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[6]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[7]." คน \n - น้องผู้หญิงคงเหลือ ".$result[8]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }
-   }else if(strpos($message, "ขอยอดน้อง sec1") !== false){
+   }else if(strpos($message, "sec1") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
@@ -93,7 +93,7 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[15]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[16]." คน \n - น้องผู้หญิงคงเหลือ ".$result[17]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }
-   }else if(strpos($message, "ขอยอดน้อง sec2") !== false){
+   }else if(strpos($message, "sec2") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
@@ -133,7 +133,7 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[24]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[25]." คน \n - น้องผู้หญิงคงเหลือ ".$result[26]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }
-   }else if(strpos($message, "ขอยอดน้อง sec3") !== false){
+   }else if(strpos($message, "sec3") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
@@ -173,7 +173,7 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[33]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[34]." คน \n - น้องผู้หญิงคงเหลือ ".$result[35]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }
-   }else if(strpos($message, "ขอยอดน้อง sec4") !== false){
+   }else if(strpos($message, "sec4") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
@@ -213,7 +213,7 @@
          $arrayPostData['messages'][2]['text'] = "ยอดน้องผู้หญิงปัจจุบัน \n - น้องผู้หญิงทั้งหมด ".$result[42]." คน \n - น้องผู้หญิงลาทั้งหมด ".$result[43]." คน \n - น้องผู้หญิงคงเหลือ ".$result[44]." คน";
          replyMsg($arrayHeader,$arrayPostData);
       }
-   }else if(strpos($message, "ขอยอดน้อง sec5") !== false){
+   }else if(strpos($message, "sec5") !== false){
       if(isset($arrayJson['events'][0]['source']['groupId'])){
          $id = $arrayJson['events'][0]['source']['groupId'];
          $arrayPostData['to'] = $id;
